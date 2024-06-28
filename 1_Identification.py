@@ -8,13 +8,13 @@ import mediapipe as mp
 # Set page configuration
 st.set_page_config(
     page_title="Person Identification and Attributes",
-    page_icon="C:/Users/tzmughal/Desktop/Person Identification/Background.png",
+    page_icon="logo.png",
 )
 
 # Title and header
 st.title('Person Identification')
 st.subheader('Upload hand image')
-st.sidebar.image("C:/Users/tzmughal/Desktop/Person Identification/Background.png")
+st.sidebar.image("logo.png")
 # Initialize MediaPipe hands module
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1)
@@ -30,7 +30,7 @@ def preprocess_and_detect_hands(image):
 
 # Function to load models and class mappings
 def load_models():
-    hand_identification_model_path = 'C:/Users/tzmughal/Desktop/Person Identification/models/hand_identification_model.h5'
+    hand_identification_model_path = 'models/hand_identification_model.h5'
     hand_identification_model = load_model(hand_identification_model_path)
     hand_identification_class_names = ['person1', 'person10', 'person100', 'person101', 'person102', 'person103', 'person104', 'person105', 'person106', 'person107', 'person108', 'person109', 
     'person11', 'person110', 'person111', 'person112', 'person113', 'person114', 'person115', 'person116', 'person117', 'person118', 'person119', 
