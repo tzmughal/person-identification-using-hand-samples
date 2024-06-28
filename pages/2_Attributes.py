@@ -8,13 +8,13 @@ import mediapipe as mp
 # Set page configuration
 st.set_page_config(
     page_title="Person Identification and Attributes",
-    page_icon="C:/Users/tzmughal/Desktop/Person Identification/Background.png",
+    page_icon="logo.png",
 )
 
 # Title and header
 st.title('Attributes Identification')
 st.subheader('Upload hand image')
-st.sidebar.image("C:/Users/tzmughal/Desktop/Person Identification/Background.png")
+st.sidebar.image("logo.png")
 
 # Initialize MediaPipe hands module
 mp_hands = mp.solutions.hands
@@ -33,32 +33,32 @@ def preprocess_and_detect_hands(image):
 # Function to load models and class mappings
 def load_models():
     # Load accessories detection model
-    accessories_detection_model_path = 'C:/Users/tzmughal/Desktop/Person Identification/models/accessories_detection_model.h5'
+    accessories_detection_model_path = 'models/accessories_detection_model.h5'
     accessories_detection_model = load_model(accessories_detection_model_path)
     accessories_detection_class_names = {0: 'No Accessory', 1: 'Hand has accessory'}  # Replace with actual class names
 
     # Load age identification model
-    age_identification_model_path = 'C:/Users/tzmughal/Desktop/Person Identification/models/age_identification_model.h5'
+    age_identification_model_path = 'models/age_identification_model.h5'
     age_identification_model = load_model(age_identification_model_path)
     age_identification_class_names = {0: '18-22', 1: '23-27', 2: '28-32', 3: '33-37', 4: '38+'}  # Replace with actual class names
 
     # Load aspect of hand identification model
-    aspect_of_hand_model_path = 'C:/Users/tzmughal/Desktop/Person Identification/models/aspect_of_hand_identification_model.h5'
+    aspect_of_hand_model_path = 'models/aspect_of_hand_identification_model.h5'
     aspect_of_hand_model = load_model(aspect_of_hand_model_path)
     aspect_of_hand_class_names = {0: 'dorsal left', 1: 'dorsal right', 2: 'palmar left', 3: 'palmar right'}  # Replace with actual class names
 
     # Load gender identification model
-    gender_identification_model_path = 'C:/Users/tzmughal/Desktop/Person Identification/models/gender_identification_model.h5'
+    gender_identification_model_path = 'models/gender_identification_model.h5'
     gender_identification_model = load_model(gender_identification_model_path)
     gender_identification_class_names = ['male', 'female']  # Replace with actual class names
 
     # Load nail polish detection model
-    nail_polish_detection_model_path = 'C:/Users/tzmughal/Desktop/Person Identification/models/nail_polish_detection_model.h5'
+    nail_polish_detection_model_path = 'models/nail_polish_detection_model.h5'
     nail_polish_detection_model = load_model(nail_polish_detection_model_path)
     nail_polish_detection_class_names = {0: 'No Nail Polish', 1: 'Nail Polish'}  # Replace with actual class names
 
     # Load skin color detection model
-    skin_color_detection_model_path = 'C:/Users/tzmughal/Desktop/Person Identification/models/skin_color_detection_model.h5'
+    skin_color_detection_model_path = 'models/skin_color_detection_model.h5'
     skin_color_detection_model = load_model(skin_color_detection_model_path)
     skin_color_detection_class_names = {0: 'dark', 1: 'fair', 2: 'medium', 3: 'very fair'}  # Replace with actual class names
 
