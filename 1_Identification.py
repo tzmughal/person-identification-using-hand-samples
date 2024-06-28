@@ -29,6 +29,7 @@ def preprocess_and_detect_hands(image):
     return img if results.multi_hand_landmarks else None
 
 # Function to load models and class mappings
+@st.cache_resource
 def load_models():
     hand_identification_model_path = 'models/hand_identification_model.h5'
     hand_identification_model = load_model(hand_identification_model_path)
