@@ -20,7 +20,7 @@ st.markdown("""
         - Detection of accessories, nail polish, and skin color.
         - Real-time image capture and analysis using the webcam.
 
-        Built using Python with Sreamlit for the GUI, OpenCV for image processing, and TensorFlow for machine learning models. It leverages MediaPipe for hand landmark detection and analysis.
+        Built using Python with Streamlit for the GUI, OpenCV for image processing, and TensorFlow for machine learning models. It leverages MediaPipe for hand landmark detection and analysis.
 
         For support or feedback, please contact us at **[tzmughalpk@gmail.com](mailto:tzmughalpk@gmail.com)**.
 
