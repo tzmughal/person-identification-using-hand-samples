@@ -4,11 +4,11 @@ import streamlit as st
 # Set page configuration
 st.set_page_config(
     page_title="Person Identification and Attributes",
-    page_icon="C:/Users/tzmughal/Desktop/Person Identification/Background.png",
+    page_icon="logo.png",
 )
 
 
-st.sidebar.image("C:/Users/tzmughal/Desktop/Person Identification/Background.png")
+st.sidebar.image("logo.png")
 
 st.title("About")
 st.markdown("""
