@@ -29,7 +29,7 @@ def preprocess_and_detect_hands(image):
     return img if results.multi_hand_landmarks else None
 
 # Function to load models and class mappings
-
+@st.cache_resource
 def load_models():
     hand_identification_model_path = 'models/hand_identification_model.h5'
     hand_identification_model = load_model(hand_identification_model_path)
@@ -52,18 +52,11 @@ def load_models():
     'person95', 'person96', 'person97', 'person98', 'person99']  # Example class names
     return hand_identification_model, hand_identification_class_names
 
-# Function to cache loaded models
-def get_cached_models():
-    session_state = st.session_state
-    if 'hand_identification_model' not in session_state:
-        session_state.hand_identification_model, session_state.hand_identification_class_names = load_models()
-    return session_state.hand_identification_model, session_state.hand_identification_class_names
 
 # Main function for Streamlit app
 def main():
     # Load models
-    hand_identification_model, hand_identification_class_names = get_cached_models()
-
+    hand_identification_model, hand_identification_class_names = load_models()
     # Upload image file
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
