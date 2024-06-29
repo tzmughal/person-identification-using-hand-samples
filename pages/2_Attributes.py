@@ -29,6 +29,13 @@ def preprocess_and_detect_hands(image):
     results = hands.process(img)
     return img if results.multi_hand_landmarks else None
 
+def classify_gender(prediction, threshold=0.5):
+    if prediction >= threshold:
+        return 'Female'
+    else:
+        return 'Male'
+
+
 
 # Function to load models and class mappings
 @st.cache_resource
@@ -51,7 +58,7 @@ def load_models():
     # Load gender identification model
     gender_identification_model_path = 'models/gender_identification_model.h5'
     gender_identification_model = load_model(gender_identification_model_path)
-    gender_identification_class_names = ['male', 'female']  # Replace with actual class names
+   
 
     # Load nail polish detection model
     nail_polish_detection_model_path = 'models/nail_polish_detection_model.h5'
@@ -67,7 +74,7 @@ def load_models():
         accessories_detection_model, accessories_detection_class_names,
         age_identification_model, age_identification_class_names,
         aspect_of_hand_model, aspect_of_hand_class_names,
-        gender_identification_model, gender_identification_class_names,
+        gender_identification_model,
         nail_polish_detection_model, nail_polish_detection_class_names,
         skin_color_detection_model, skin_color_detection_class_names)
 
@@ -80,7 +87,7 @@ def main():
         accessories_detection_model, accessories_detection_class_names,
         age_identification_model, age_identification_class_names,
         aspect_of_hand_model, aspect_of_hand_class_names,
-        gender_identification_model, gender_identification_class_names,
+        gender_identification_model,
         nail_polish_detection_model, nail_polish_detection_class_names,
         skin_color_detection_model, skin_color_detection_class_names) = load_models()
 
@@ -118,9 +125,8 @@ def main():
             predicted_aspect_class = aspect_of_hand_class_names[predicted_aspect_class_index]
 
             # Example using gender identification model
-            gender_identification_prediction = gender_identification_model.predict(np.expand_dims(hand_image, axis=0))
-            predicted_gender_class_index = np.argmax(gender_identification_prediction)
-            predicted_gender_class = gender_identification_class_names[predicted_gender_class_index]
+            gender_prediction = gender_identification_model.predict(np.expand_dims(hand_image, axis=0))
+            predicted_gender_class = classify_gender(np.max(gender_prediction)) 
 
             # Example using nail polish detection model
             nail_polish_detection_prediction = nail_polish_detection_model.predict(np.expand_dims(hand_image, axis=0))
@@ -194,10 +200,8 @@ def main():
                 predicted_aspect_class = aspect_of_hand_class_names[predicted_aspect_class_index]
 
                 # Example using gender identification model
-                gender_identification_prediction = gender_identification_model.predict(np.expand_dims(hand_image, axis=0))
-                predicted_gender_class_index = np.argmax(gender_identification_prediction)
-                predicted_gender_class = gender_identification_class_names[predicted_gender_class_index]
-
+                gender_prediction = gender_identification_model.predict(np.expand_dims(hand_image, axis=0))
+                predicted_gender_class = classify_gender(np.max(gender_prediction)) 
                 # Example using nail polish detection model
                 nail_polish_detection_prediction = nail_polish_detection_model.predict(np.expand_dims(hand_image, axis=0))
                 predicted_nail_polish_class_index = np.argmax(nail_polish_detection_prediction)
