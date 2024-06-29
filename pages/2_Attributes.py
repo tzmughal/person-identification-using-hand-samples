@@ -31,6 +31,7 @@ def preprocess_and_detect_hands(image):
 
 
 # Function to load models and class mappings
+@st.cache_resource
 def load_models():
     # Load accessories detection model
     accessories_detection_model_path = 'models/accessories_detection_model.h5'
@@ -71,24 +72,6 @@ def load_models():
         skin_color_detection_model, skin_color_detection_class_names)
 
 
-def get_cached_models():
-    session_state = st.session_state
-    if 'models_loaded' not in session_state:
-        (
-            session_state.accessories_detection_model, session_state.accessories_detection_class_names,
-            session_state.age_identification_model, session_state.age_identification_class_names,
-            session_state.aspect_of_hand_model, session_state.aspect_of_hand_class_names,
-            session_state.gender_identification_model, session_state.gender_identification_class_names,
-            session_state.nail_polish_detection_model, session_state.nail_polish_detection_class_names,
-            session_state.skin_color_detection_model, session_state.skin_color_detection_class_names) = load_models()
-        session_state.models_loaded = True
-    return (
-        session_state.accessories_detection_model, session_state.accessories_detection_class_names,
-        session_state.age_identification_model, session_state.age_identification_class_names,
-        session_state.aspect_of_hand_model, session_state.aspect_of_hand_class_names,
-        session_state.gender_identification_model, session_state.gender_identification_class_names,
-        session_state.nail_polish_detection_model, session_state.nail_polish_detection_class_names,
-        session_state.skin_color_detection_model, session_state.skin_color_detection_class_names)
 
 
 def main():
@@ -99,7 +82,7 @@ def main():
         aspect_of_hand_model, aspect_of_hand_class_names,
         gender_identification_model, gender_identification_class_names,
         nail_polish_detection_model, nail_polish_detection_class_names,
-        skin_color_detection_model, skin_color_detection_class_names) = get_cached_models()
+        skin_color_detection_model, skin_color_detection_class_names) = load_models()
 
     # Upload image file
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
