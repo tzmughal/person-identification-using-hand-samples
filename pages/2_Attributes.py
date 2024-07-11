@@ -35,6 +35,11 @@ def classify_gender(prediction, threshold=0.5):
     else:
         return 'Male'
 
+def classify_gen(prediction, threshold=0.5):
+    if prediction >= threshold:
+        return 'Male'
+    else:
+        return 'Female'
 
 
 # Function to load models and class mappings
@@ -184,30 +189,31 @@ def main():
 
             if hand_image is not None:
 
-                # Example using accessories detection model
+                # accessories detection model
                 accessories_detection_prediction = accessories_detection_model.predict(np.expand_dims(hand_image, axis=0))
                 predicted_accessories_class_index = np.argmax(accessories_detection_prediction)
                 predicted_accessories_class = accessories_detection_class_names[predicted_accessories_class_index]
 
-                # Example using age identification model
+                #  age identification model
                 age_identification_prediction = age_identification_model.predict(np.expand_dims(hand_image, axis=0))
                 predicted_age_class_index = np.argmax(age_identification_prediction)
                 predicted_age_class = age_identification_class_names[predicted_age_class_index]
 
-                # Example using aspect of hand identification model
+                #  aspect of hand identification model
                 aspect_of_hand_prediction = aspect_of_hand_model.predict(np.expand_dims(hand_image, axis=0))
                 predicted_aspect_class_index = np.argmax(aspect_of_hand_prediction)
                 predicted_aspect_class = aspect_of_hand_class_names[predicted_aspect_class_index]
 
-                # Example using gender identification model
+                # gender identification model
                 gender_prediction = gender_identification_model.predict(np.expand_dims(hand_image, axis=0))
-                predicted_gender_class = classify_gender(np.max(gender_prediction)) 
-                # Example using nail polish detection model
+                predicted_gender_class = classify_gen(np.max(gender_prediction)) 
+                
+                # nail polish detection model
                 nail_polish_detection_prediction = nail_polish_detection_model.predict(np.expand_dims(hand_image, axis=0))
                 predicted_nail_polish_class_index = np.argmax(nail_polish_detection_prediction)
                 predicted_nail_polish_class = nail_polish_detection_class_names[predicted_nail_polish_class_index]
 
-                # Example using skin color detection model
+                # skin color detection model
                 skin_color_detection_prediction = skin_color_detection_model.predict(np.expand_dims(hand_image, axis=0))
                 predicted_skin_color_class_index = np.argmax(skin_color_detection_prediction)
                 predicted_skin_color_class = skin_color_detection_class_names[predicted_skin_color_class_index]
