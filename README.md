@@ -53,12 +53,12 @@ Built with 🐍 Python, 🎯 TensorFlow, 📸 OpenCV, and 🖐️ MediaPipe — 
 
 ## 🖼 Screenshots
 
-> 📌 Add screenshots in the `/screenshots` folder and update paths below.
-| Description              | Screenshot            |
-|--------------------------|------------------------|
-| 🔍 Biometric Identification   | ![upload](images/2.png) |
-| 📸 Attributes Identification       | ![webcam](images/3.png) |
-| 🧠 About    | ![results](images/4.png) |
+
+| Description                  | Screenshot              |
+|------------------------------|--------------------------|
+| 🔍 Biometric Identification  | ![Biometric](images/2.png) |
+| 📸 Attributes Identification | ![Attributes](images/3.png) |
+| 🧠 About Section              | ![About](images/4.png)     |
 
 
 ---
