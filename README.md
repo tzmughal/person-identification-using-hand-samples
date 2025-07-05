@@ -56,8 +56,8 @@ Built with 🐍 Python, 🎯 TensorFlow, 📸 OpenCV, and 🖐️ MediaPipe — 
 
 | Description                  | Screenshot              |
 |------------------------------|--------------------------|
-| 🔍 Biometric Identification  | ![Biometric](images/2.png) |
-| 📸 Attributes Identification | ![Attributes](images/3.png) |
+| 🔍 Biometric Identification  | ![Biometric](images/2.jpg) |
+| 📸 Attributes Identification | ![Attributes](images/3.jpg) |
 | 🧠 About Section              | ![About](images/4.png)     |
 
 
